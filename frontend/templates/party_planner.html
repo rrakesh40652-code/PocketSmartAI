@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Party Planner - PocketSmart AI</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header>
+<h1>PocketSmart AI</h1>
+<p>Your Smart Budget & Recommendation Assistant</p>
+</header>
+<main class="container">
+<h2>Party Planner</h2>
+<form id="partyForm">
+<label>Budget (₹)</label>
+<input type="number" name="budget" placeholder="Enter your budget" required>
+<label>Number of Guests</label>
+<input type="number" name="guests" placeholder="Example: 20" required>
+<label>Event Type</label>
+<input type="text" name="event_type" placeholder="Example: Birthday" required>
+<label>Venue</label>
+<input type="text" name="venue" placeholder="Example: Home">
+<button type="submit">Get Recommendations</button>
+</form>
+<div id="result"></div>
+<a href="/">← Back to Home</a>
+</main>
+<footer>© 2026 PocketSmart AI</footer>
+<script src="/static/js/script.js"></script>
+<script>submitPlanner("partyForm","/generate-party");</script>
+</body>
+</html>

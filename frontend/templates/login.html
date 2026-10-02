@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - PocketSmart AI</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header>
+<h1>PocketSmart AI</h1>
+<p>Your Smart Budget & Recommendation Assistant</p>
+</header>
+<main class="container">
+<h2>Login</h2>
+<form id="loginForm">
+<label>Username</label>
+<input type="text" id="username" name="username" required>
+<label>Password</label>
+<input type="password" id="password" name="password" required>
+<button type="submit">Login</button>
+</form>
+<div id="loginResult"></div>
+<a href="/">← Back to Home</a>
+</main>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    try {
+        const response = await fetch("/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        });
+        const data = await response.json();
+        document.getElementById("loginResult").innerHTML =
+            "<div class='result-card'><p>" +
+            data.message +
+            "</p></div>";
+    } catch (error) {
+        document.getElementById("loginResult").innerHTML =
+            "<div class='result-card'><p>Login failed. Please try again.</p></div>";
+    }
+});
+</script>
+</body>
+</html>

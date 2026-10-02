@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - PocketSmart AI</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header>
+<h1>PocketSmart AI</h1>
+<p>Your Smart Budget & Recommendation Assistant</p>
+</header>
+<main class="container">
+<h2>Register</h2>
+<form id="registerForm">
+<label>Username</label>
+<input type="text" id="username" name="username" required>
+<label>Password</label>
+<input type="password" id="password" name="password" required>
+<button type="submit">Register</button>
+</form>
+<div id="registerResult"></div>
+<a href="/">← Back to Home</a>
+</main>
+<script>
+document.getElementById("registerForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const response = await fetch("/auth/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    });
+    const data = await response.json();
+    document.getElementById("registerResult").innerHTML =
+        "<div class='result-card'><p>" +
+        data.message +
+        "</p></div>";
+});
+</script>
+</body>
+</html>

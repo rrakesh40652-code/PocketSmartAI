@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Interior Planner - PocketSmart AI</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header>
+<h1>PocketSmart AI</h1>
+<p>Your Smart Budget & Recommendation Assistant</p>
+</header>
+<main class="container">
+<h2>Home Interior Planner</h2>
+<form id="homeForm">
+<label>Budget (₹)</label>
+<input type="number" name="budget" placeholder="Enter your budget" required>
+<label>Room Type</label>
+<input type="text" name="room_type" placeholder="Example: Bedroom" required>
+<label>Quantity</label>
+<input type="number" name="quantity" value="1" min="1" required>
+<button type="submit">Get Recommendations</button>
+</form>
+<div id="result"></div>
+<a href="/">← Back to Home</a>
+</main>
+<footer>© 2026 PocketSmart AI</footer>
+<script src="/static/js/script.js"></script>
+<script>submitPlanner("homeForm","/generate-home");</script>
+</body>
+</html>
